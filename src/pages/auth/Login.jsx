@@ -5,12 +5,33 @@ import {
   RiEyeFill,
   RiEyeOffFill,
 } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleShowPassword = () =>{
     setShowPassword(!showPassword);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if([email, password].includes("")){
+      toast.error("Todos los campos son obligatorios 😑",{
+        theme:"dark",
+      });
+      return;
+    }
+    if(password.length < 6){
+      toast.error("El Password tiene que tener al menos 6 caracteres 😟",{
+        theme:"dark",
+      });
+      return;
+    }
+    
   }
 
   return (
@@ -20,13 +41,15 @@ const Login = () => {
           Iniciar Sesión{" "}
         </h1>
       </div>
-      <form className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="relative">
           <RiMailCheckLine className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500" />
           <input
             type="email"
             className="w-full border border-blue-300 outline-none py-2 px-8 rounded-lg"
             placeholder="Correo Electrónico "
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="relative">
@@ -35,6 +58,8 @@ const Login = () => {
             type={showPassword ? "text" : "password"}
             className="w-full border border-blue-300 outline-none py-2 px-8 rounded-lg"
             placeholder="Ingresa tu Contraseña "
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           {showPassword ? (
             <RiEyeFill onClick={handleShowPassword} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:cursor-pointer" />

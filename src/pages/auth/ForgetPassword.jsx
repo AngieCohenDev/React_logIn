@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   RiMailCheckLine,
-  RiKey2Line,
-  RiEyeFill,
-  RiEyeOffFill,
 } from "react-icons/ri";
 import { toast } from "react-toastify";
 

@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import AuthLayout from './layouts/auth/AuthLayout';
 //pages
 import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
+import Registro from './pages/auth/Registrar';
 import ForgetPassword from './pages/auth/ForgetPassword';
 import ChangePassword from './pages/auth/ChangePassword';
 import Error404 from './pages/auth/Error404';
@@ -13,7 +13,7 @@ function App() {
     <Routes>
       <Route path='/' element={<AuthLayout />}>
         <Route index element={<Login />} />
-        <Route path='register' element={<Register />}/>
+        <Route path='registrar' element={<Registro />}/>
         <Route path='olvide-password' element={<ForgetPassword />}/>
         <Route path='restablecer-password/:token' element={<ChangePassword />}/>
       </Route>
